@@ -1,5 +1,7 @@
 package com;
 
 public class DoctorRegisterService {
-//doctor
+	//doctor
+	//add
+
 }
