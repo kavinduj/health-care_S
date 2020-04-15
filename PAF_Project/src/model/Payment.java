@@ -19,7 +19,7 @@ public class Payment {
 		 Class.forName("com.mysql.jdbc.Driver");
 
 		 //Provide the correct details: DBServer/DBName, username, password
-		 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/itpm", "root", "");
+		 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/paf", "root", "");
 		 
 		//For testing
 		 System.out.print("Successfully connected"); 
