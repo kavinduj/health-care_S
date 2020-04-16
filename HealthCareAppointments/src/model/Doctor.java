@@ -122,7 +122,7 @@ public class Doctor {
 			preparedStmt.setString(6, Dspecial);
 			preparedStmt.setString(7, DregisterNumber);
 			preparedStmt.setString(8, Dhospitals);
-			preparedStmt.setInt(9, Integer.parseInt(Dnic));
+			preparedStmt.setString(9,Dnic);
 // execute the statement
 			preparedStmt.execute();
 			con.close();
@@ -145,7 +145,7 @@ public class Doctor {
 			String query = "delete from doctor_reg_req where D_NIC=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 // binding values
-			preparedStmt.setInt(1, Integer.parseInt(Dnic));
+			preparedStmt.setString(1,Dnic);
 // execute the statement
 			preparedStmt.execute();
 			con.close();
