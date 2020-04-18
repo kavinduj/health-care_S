@@ -175,6 +175,97 @@ public class Appointment {
 		 }
 		 return output;
 		 } 
+		
+		
+		
+		
+		
+		
+		public String readAppointmentDetails(String specialization) {
+			String output = "";
+			try {
+				Connection con = connect();
+				if (con == null) {
+					return "Error while connecting to the database for reading.";
+				}
+				// Prepare the html table to be displayed
+				output = "<table border=\"1\"><tr> <th>RD_ID</th> <th>RD_Name</th> <th>RD_Specialization</th> <th>RD_NIC</th> <th>RD_Hospital</th> <th>RD_RegisterNumber</th> <th>RD_PhoneNumber</th> <th>RD_Email</th> <th>RD_Fee</th> <th>RD_Monday</th> <th>RD_Tuesday</th> <th>RD_Wednesday</th> <th>RD_Thursday</th> <th>RD_Friday</th> <th>RD_Saturday</th> <th>RD_Sunday</th> </tr>";
+				String query = "select * from registered_doctor where RD_Specialization="+specialization ;
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				// iterate through the rows in the result set
+				while (rs.next()) {
+					String RD_ID = Integer.toString(rs.getInt("RD_ID"));
+					String RD_Name = rs.getString("RD_Name");
+					String RD_Specialization = rs.getString("RD_Specialization");
+					String RD_NIC = rs.getString("RD_NIC");
+					String RD_Hospital = rs.getString("RD_Hospital");
+					String RD_RegisterNumber = rs.getString("RD_RegisterNumber");
+					String RD_PhoneNumber = rs.getString("RD_PhoneNumber");
+					String RD_Email = rs.getString("RD_Email");
+					String RD_Fee = rs.getString("RD_Fee");
+					String RD_Monday = rs.getString("RD_Monday");
+					String RD_Tuesday = rs.getString("RD_Tuesday");
+					String RD_Wednesday = rs.getString("RD_Wednesday");
+					String RD_Thursday = rs.getString("RD_Thursday");
+					String RD_Friday = rs.getString("RD_Friday");
+					String RD_Saturday = rs.getString("RD_Saturday");
+					String RD_Sunday = rs.getString("RD_Sunday");
+
+					// Add into the html table
+
+					output += "<tr><td>" + RD_ID + "</td>";
+					output += "<td>" + RD_Name + "</td>";
+					output += "<td>" + RD_Specialization + "</td>";
+					output += "<td>" + RD_NIC + "</td>";
+					output += "<td>" + RD_Hospital + "</td>";
+					output += "<td>" + RD_RegisterNumber + "</td>";
+					output += "<td>" + RD_PhoneNumber + "</td>";
+					output += "<td>" + RD_Email + "</td>";
+					output += "<td>" + RD_Fee + "</td>";
+					output += "<td>" + RD_Monday + "</td>";
+					output += "<td>" + RD_Tuesday + "</td>";
+					output += "<td>" + RD_Wednesday + "</td>";
+					output += "<td>" + RD_Thursday + "</td>";
+					output += "<td>" + RD_Friday + "</td>";
+					output += "<td>" + RD_Saturday + "</td>";
+					output += "<td>" + RD_Sunday + "</td></tr>";
+
+					// buttons
+					// output += "<td><input name=\"btnUpdate\" type=\"button\"
+					// value=\"Update\" class=\"btn btn-secondary\"></td>"
+					// + "<td><form method=\"post\" action=\"items.jsp\">"
+					// + "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"
+					// class=\"btn btn-danger\">"
+					// + "<input name=\"itemID\" type=\"hidden\" value=\"" + itemID
+					// + "\">" + "</form></td></tr>";
+				}
+				con.close();
+				// Complete the html table
+				output += "</table>";
+			} catch (Exception e) {
+				output = "Error while reading the items.";
+				System.err.println(e.getMessage());
+			}
+			return output;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 
 }

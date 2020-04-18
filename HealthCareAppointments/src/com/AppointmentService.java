@@ -83,4 +83,18 @@ public class AppointmentService {
 	 String output = appointmentObj.deleteItem(A_AppointmentID);
 	return output;
 	}
+	
+	
+	
+	@GET
+	@Path("/AppointmentDetails/{RD_Specialization}")
+	@Produces(MediaType.TEXT_HTML)
+	public String readAppointmentDetails(@PathParam("RD_Specialization") String RD_Specialization)
+	 {
+	 return appointmentObj.readAppointmentDetails(RD_Specialization);
+	 }
+	
+	
+	
+	
 }
