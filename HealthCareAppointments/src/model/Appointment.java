@@ -139,7 +139,7 @@ public class Appointment {
 		 // execute the statement
 		 preparedStmt.execute();
 		 con.close();
-		 output = "Updated successfully";
+		 output = "Appointment Updated successfully";
 		 }
 		 catch (Exception e)
 		 {
