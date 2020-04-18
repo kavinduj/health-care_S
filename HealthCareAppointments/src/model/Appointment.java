@@ -59,7 +59,7 @@ public class Appointment {
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while inserting the item.";
+		 output = "Error while inserting the appointment.";
 		 System.err.println(e.getMessage());
 		 }
 		 return output;
@@ -110,7 +110,7 @@ public class Appointment {
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while reading the items.";
+		 output = "Error while reading the appointments.";
 		 System.err.println(e.getMessage());
 		 }
 		 return output;
@@ -143,7 +143,7 @@ public class Appointment {
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while updating the item.";
+		 output = "Error while updating the appointment.";
 		 System.err.println(e.getMessage());
 		 }
 		 return output;
@@ -170,7 +170,7 @@ public class Appointment {
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while deleting the item.";
+		 output = "Error while deleting the appointment.";
 		 System.err.println(e.getMessage());
 		 }
 		 return output;
