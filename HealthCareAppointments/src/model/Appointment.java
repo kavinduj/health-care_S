@@ -30,7 +30,7 @@ public class Appointment {
 		
 		
 		
-		public String insertItem(String aname, String anic, String aphone, String adoctorname, String ahosname, String adate, String atime)
+		public String insertAppointment(String aname, String anic, String aphone, String adoctorname, String ahosname, String adate, String atime)
 		 {
 		 String output = "";
 		 try
@@ -67,7 +67,7 @@ public class Appointment {
 		
 		
 		
-		public String readItems()
+		public String readAppointments()
 		 {
 		 String output = "";
 		 try
@@ -116,7 +116,7 @@ public class Appointment {
 		 return output;
 		 } 
 		
-		public String updateItem(String aID, String aname, String anic, String aphone, String adoctorname, String ahosname, String adate, String atime)
+		public String updateAppointment(String aID, String aname, String anic, String aphone, String adoctorname, String ahosname, String adate, String atime)
 		 {
 		 String output = "";
 		 try
@@ -150,7 +150,7 @@ public class Appointment {
 		 }
 		
 		
-		public String deleteItem(String A_AppointmentID)
+		public String DeleteAppointment(String A_AppointmentID)
 		 {
 		 String output = "";
 		 try
@@ -189,8 +189,8 @@ public class Appointment {
 					return "Error while connecting to the database for reading.";
 				}
 				// Prepare the html table to be displayed
-				output = "<table border=\"1\"><tr> <th>RD_ID</th> <th>RD_Name</th> <th>RD_Specialization</th> <th>RD_NIC</th> <th>RD_Hospital</th> <th>RD_RegisterNumber</th> <th>RD_PhoneNumber</th> <th>RD_Email</th> <th>RD_Fee</th> <th>RD_Monday</th> <th>RD_Tuesday</th> <th>RD_Wednesday</th> <th>RD_Thursday</th> <th>RD_Friday</th> <th>RD_Saturday</th> <th>RD_Sunday</th> </tr>";
-				String query = "select * from registered_doctor where RD_Specialization="+specialization ;
+				output = "<table border=\"1\"><tr> <th>ID</th> <th>Name</th> <th>Specialization</th>  <th>Hospitals</th>   <th>Fee</th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th> <th>Sunday</th> </tr>";
+				String query = "select RD_ID,RD_Name,RD_Specialization,RD_Hospital,RD_Fee,RD_Monday,RD_Tuesday,RD_Wednesday,RD_Thursday,RD_Friday,RD_Saturday,RD_Sunday from registered_doctor where RD_Specialization="+specialization ;
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
 				// iterate through the rows in the result set
@@ -198,11 +198,7 @@ public class Appointment {
 					String RD_ID = Integer.toString(rs.getInt("RD_ID"));
 					String RD_Name = rs.getString("RD_Name");
 					String RD_Specialization = rs.getString("RD_Specialization");
-					String RD_NIC = rs.getString("RD_NIC");
 					String RD_Hospital = rs.getString("RD_Hospital");
-					String RD_RegisterNumber = rs.getString("RD_RegisterNumber");
-					String RD_PhoneNumber = rs.getString("RD_PhoneNumber");
-					String RD_Email = rs.getString("RD_Email");
 					String RD_Fee = rs.getString("RD_Fee");
 					String RD_Monday = rs.getString("RD_Monday");
 					String RD_Tuesday = rs.getString("RD_Tuesday");
@@ -217,11 +213,7 @@ public class Appointment {
 					output += "<tr><td>" + RD_ID + "</td>";
 					output += "<td>" + RD_Name + "</td>";
 					output += "<td>" + RD_Specialization + "</td>";
-					output += "<td>" + RD_NIC + "</td>";
 					output += "<td>" + RD_Hospital + "</td>";
-					output += "<td>" + RD_RegisterNumber + "</td>";
-					output += "<td>" + RD_PhoneNumber + "</td>";
-					output += "<td>" + RD_Email + "</td>";
 					output += "<td>" + RD_Fee + "</td>";
 					output += "<td>" + RD_Monday + "</td>";
 					output += "<td>" + RD_Tuesday + "</td>";

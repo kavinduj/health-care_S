@@ -19,16 +19,16 @@ public class AppointmentService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
-	public String readItems()
+	public String readAppointments()
 	 {
-	 return appointmentObj.readItems();
+	 return appointmentObj.readAppointments();
 	 }
 	
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String insertItem(@FormParam("A_PatientName") String A_PatientName,
+	public String insertAppointment(@FormParam("A_PatientName") String A_PatientName,
 	 @FormParam("A_PatientNIC") String A_PatientNIC,
 	 @FormParam("A_PatientPhoneNo") String A_PatientPhoneNo,
 	 @FormParam("A_DoctorName") String A_DoctorName,
@@ -37,7 +37,7 @@ public class AppointmentService {
 	 @FormParam("A_Time") String A_Time)
 	
 	{
-	 String output = appointmentObj.insertItem(A_PatientName, A_PatientNIC, A_PatientPhoneNo, A_DoctorName, A_HospitalName, A_Date, A_Time);
+	 String output = appointmentObj.insertAppointment(A_PatientName, A_PatientNIC, A_PatientPhoneNo, A_DoctorName, A_HospitalName, A_Date, A_Time);
 	return output;
 	}
 	
@@ -47,7 +47,7 @@ public class AppointmentService {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String updateItem(String itemData)
+	public String updateAppointment(String itemData)
 	{
 	//Convert the input string to a JSON object
 	 JsonObject appointmentObject = new JsonParser().parse(itemData).getAsJsonObject();
@@ -61,7 +61,7 @@ public class AppointmentService {
 	 String A_Date = appointmentObject.get("A_Date").getAsString();
 	 String A_Time = appointmentObject.get("A_Time").getAsString();
 	 
-	 String output = appointmentObj.updateItem(A_AppointmentID, A_PatientName, A_PatientNIC, A_PatientPhoneNo, A_DoctorName, A_HospitalName, A_Date, A_Time);
+	 String output = appointmentObj.updateAppointment(A_AppointmentID, A_PatientName, A_PatientNIC, A_PatientPhoneNo, A_DoctorName, A_HospitalName, A_Date, A_Time);
 	return output;
 	}
 	
@@ -73,14 +73,14 @@ public class AppointmentService {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String  Item(String itemData)
+	public String  DeleteAppointment(String itemData)
 	{
 	//Convert the input string to an XML document
 	 Document doc = Jsoup.parse(itemData, "", Parser.xmlParser());
 
 	//Read the value from the element <itemID>
 	 String A_AppointmentID = doc.select(",m/").text();
-	 String output = appointmentObj.deleteItem(A_AppointmentID);
+	 String output = appointmentObj.DeleteAppointment(A_AppointmentID);
 	return output;
 	}
 	
