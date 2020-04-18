@@ -110,7 +110,7 @@ public class Appointment {
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while reading the appointments.";
+		 output = "Error while reading the appointments";
 		 System.err.println(e.getMessage());
 		 }
 		 return output;
