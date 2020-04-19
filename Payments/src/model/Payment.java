@@ -158,9 +158,9 @@ public class Payment {
 		 // create a prepared statement
 		 String query = "delete from payment where P_PaymentID=?";
 		 PreparedStatement preparedStmt = con.prepareStatement(query);
-		 // binding values
+		 
 		 preparedStmt.setInt(1, Integer.parseInt(P_PaymentID));
-		 // execute the statement
+		 
 		 preparedStmt.execute();
 		 con.close();
 		 output = "Deleted Payment successfully";
