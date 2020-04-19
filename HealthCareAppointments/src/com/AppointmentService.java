@@ -94,6 +94,13 @@ public class AppointmentService {
 	 return appointmentObj.readAppointmentDetails(RD_Specialization);
 	 }
 	
+	@GET
+	@Path("/DoctorDeatails/{RD_Name}")
+	@Produces(MediaType.TEXT_HTML)
+	public String readDoctorDetails(@PathParam("RD_Name") String RD_Name)
+	 {
+	 return appointmentObj.readDoctorDetails(RD_Name);
+	 }
 	
 	
 	
