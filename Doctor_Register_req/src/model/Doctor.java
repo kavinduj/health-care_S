@@ -157,5 +157,54 @@ public String updateDoctor(String Dnic, String Dname, String DphoneNumber, Strin
 		return output;
 	}
 	
+	public String readRegisterdHospitals(String hospitalname)
+	 {
+	 String output = "";
+	 try
+	 {
+	 Connection con = connect();
+	 if (con == null)
+	 {return "Error while connecting to the database for reading."; }
+	 // Prepare the html table to be displayed
+	 output = "<table border=\"1\"><tr><th>Hospital_ID</th><th> HospitalName </th><th> Email </th><th> Address </th><th> PhoneNumber </th><th> Reg_Number </th></tr>";
+	 String query = "select * from registered_hospital where HospitalName="+hospitalname ;
+	 Statement stmt = con.createStatement();
+	 ResultSet rs = stmt.executeQuery(query);
+	 // iterate through the rows in the result set
+	 while (rs.next())
+	 {
+		 String Hospital_ID = Integer.toString(rs.getInt("Hospital_ID"));
+		 String HospitalName = rs.getString("HospitalName");
+		 String Email = rs.getString("Email");
+		 String Address = rs.getString("Address");		
+		 String PhoneNumber = rs.getString("PhoneNumber");
+		 String Reg_Number = rs.getString("Reg_Number");
+		
+	 // Add into the html table
+		 output += "<tr><td>" + Hospital_ID + "</td>";
+		 output += "<td>" + HospitalName + "</td>";
+		 output += "<td>" + Email + "</td>";
+		 output += "<td>" + Address + "</td>";
+		 output += "<td>" + PhoneNumber + "</td>";
+		 output += "<td>" + Reg_Number + "</td></tr>";
+		 
+	 // buttons
+	 //output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"+ "<td><form method=\"post\" action=\"items.jsp\">" + "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
+	// + "<input name=\"AppointmentID\" type=\"hidden\" value=\"" + AppointmentID
+	// + "\">" + "</form></td></tr>";
+	 }
+	 con.close();
+	 // Complete the html table
+	 output += "</table>";
+	 }
+	 catch (Exception e)
+	 {
+	 output = "Error while reading the items.";
+	 System.err.println(e.getMessage());
+	 }
+	 return output;
+	 }
+	
+	
 	
 }
