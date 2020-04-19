@@ -85,7 +85,20 @@ public class PaymentService {
 			 
 			 String output = payObj.deletePayment(P_PaymentID); 
 			 
-			 return output; }
+			 return output; 
+			 
+		}
+		
+		//Read appointmentDetails
+		
+		@GET
+		@Path("/AppointmentDetails/{RD_ID}")
+		@Produces(MediaType.TEXT_HTML)
+		public String readAppointmentDetails(@PathParam("RD_ID")String RD_ID)
+		 {
+		 return payObj.readAppointmentDetails(RD_ID);
+		 }
 
 }
+
 

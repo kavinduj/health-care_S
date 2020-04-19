@@ -171,7 +171,63 @@ public class Payment {
 		 System.err.println(e.getMessage());
 		 }
 		 return output;
-		 } 
+		 }
+		
+		//Read payment table
+		
+		public String readAppointmentDetails(String specialization) {
+			String output = "";
+			try {
+				Connection con = connect();
+				if (con == null) {
+					return "Error while connecting to the database for reading.";
+				}
+				// Prepare the html table to be displayed
+				output = "<table border=\"1\"><tr> <th>ID</th> <th>Name</th> <th>Specialization</th>  <th>Hospitals</th>   <th>Fee</th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th> <th>Sunday</th> </tr>";
+				String query = "select RD_ID,RD_Name,RD_Specialization,RD_Hospital,RD_Fee,RD_Monday,RD_Tuesday,RD_Wednesday,RD_Thursday,RD_Friday,RD_Saturday,RD_Sunday from registered_doctor where RD_Specialization="+specialization ;
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				// iterate through the rows in the result set
+				while (rs.next()) {
+					String RD_ID = Integer.toString(rs.getInt("RD_ID"));
+					String RD_Name = rs.getString("RD_Name");
+					String RD_Specialization = rs.getString("RD_Specialization");
+					String RD_Hospital = rs.getString("RD_Hospital");
+					String RD_Fee = rs.getString("RD_Fee");
+					String RD_Monday = rs.getString("RD_Monday");
+					String RD_Tuesday = rs.getString("RD_Tuesday");
+					String RD_Wednesday = rs.getString("RD_Wednesday");
+					String RD_Thursday = rs.getString("RD_Thursday");
+					String RD_Friday = rs.getString("RD_Friday");
+					String RD_Saturday = rs.getString("RD_Saturday");
+					String RD_Sunday = rs.getString("RD_Sunday");
+
+					// Add into the html table
+
+					output += "<tr><td>" + RD_ID + "</td>";
+					output += "<td>" + RD_Name + "</td>";
+					output += "<td>" + RD_Specialization + "</td>";
+					output += "<td>" + RD_Hospital + "</td>";
+					output += "<td>" + RD_Fee + "</td>";
+					output += "<td>" + RD_Monday + "</td>";
+					output += "<td>" + RD_Tuesday + "</td>";
+					output += "<td>" + RD_Wednesday + "</td>";
+					output += "<td>" + RD_Thursday + "</td>";
+					output += "<td>" + RD_Friday + "</td>";
+					output += "<td>" + RD_Saturday + "</td>";
+					output += "<td>" + RD_Sunday + "</td></tr>";
+
+					
+				}
+				con.close();
+				// Complete the html table
+				output += "</table>";
+			} catch (Exception e) {
+				output = "Error while reading the items.";
+				System.err.println(e.getMessage());
+			}
+			return output;
+		}
 
 }
 
