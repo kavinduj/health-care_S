@@ -33,10 +33,10 @@ public String readRegDetails() {
 	 return docobj.readRegisterdHospitals(HospitalName);
 	 }
 
-	@POST
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.TEXT_PLAIN)
+@POST
+@Path("/")
+@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+@Produces(MediaType.TEXT_PLAIN)
 	
 public String insertDoctor(@FormParam("D_NIC") String D_NIC, @FormParam("D_Name") String D_Name,
 			@FormParam("D_PhoneNumber") String D_PhoneNumber, @FormParam("D_Fee") String D_Fee,
