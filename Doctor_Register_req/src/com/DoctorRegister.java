@@ -25,9 +25,9 @@ public String readRegDetails() {
 		return docobj.readRegDetails();
 	}
 	
-	@GET
-	@Path("/RegisterdHospitals/{HospitalName}")
-	@Produces(MediaType.TEXT_HTML)
+@GET
+@Path("/RegisterdHospitals/{HospitalName}")
+@Produces(MediaType.TEXT_HTML)
 	public String readRegisterdHospitals(@PathParam("HospitalName")String HospitalName)
 	 {
 	 return docobj.readRegisterdHospitals(HospitalName);
