@@ -17,9 +17,9 @@ import org.jsoup.nodes.Document;
 public class DoctorRegister{
 	Doctor docobj = new Doctor();
 
-	@GET
-	@Path("/")
-	@Produces(MediaType.TEXT_HTML)
+@GET
+@Path("/")
+@Produces(MediaType.TEXT_HTML)
 	
 public String readRegDetails() {
 		return docobj.readRegDetails();
@@ -49,10 +49,10 @@ public String insertDoctor(@FormParam("D_NIC") String D_NIC, @FormParam("D_Name"
 	
 	
 
-	@PUT
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+@PUT
+@Path("/")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.TEXT_PLAIN)
 	
 public String updateDoctor(String itemData) {
 		
@@ -75,10 +75,10 @@ public String updateDoctor(String itemData) {
 		return output;
 	}
 	
-	@DELETE
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.TEXT_PLAIN)
+@DELETE
+@Path("/")
+@Consumes(MediaType.APPLICATION_XML)
+@Produces(MediaType.TEXT_PLAIN)
 	
 public String deleteDoctor(String itemData)
 	{
